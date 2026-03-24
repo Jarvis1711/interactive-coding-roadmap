@@ -1,24 +1,25 @@
 # Proof of Concept - Interactive Coding Roadmap
 
-## Idea Reference
-- Number: 59
-- Title: Interactive Coding Roadmap
-- Description: A visual graph showing what to learn next based on career goals.
+## Scope
+- App category: Health & Wellness
+- Entity model: Interactive Coding Care Record
+- Deployable stack: Flask + SQLAlchemy + Gunicorn + Docker + CI
 
-## PoC Scope
-- App boots with Flask + SQLite persistence
-- CRUD flow works via web UI (`/`, `/items/new`, `/items/<id>/edit`)
-- API endpoints return valid JSON (`/api/health`, `/api/items`)
-- Deployability assets included (`Dockerfile`, `docker-compose.yml`, `Procfile`)
+## Dynamic Field Configuration
+- Patient/User: `patient_or_user` (text)
+- Wellness Metric: `wellness_metric` (number)
+- Care Notes: `care_notes` (textarea)
 
-## Run Evidence (to capture)
+## Run Evidence Commands
 ```bash
 python app.py
 curl http://localhost:5000/api/health
-curl -X POST http://localhost:5000/api/items -H "Content-Type: application/json" -d '{"title": "Demo item", "details": "Created from PoC command", "status": "active"}'
-curl http://localhost:5000/api/items
+curl http://localhost:5000/api/schema
+curl -X POST http://localhost:5000/api/records   -H "Content-Type: application/json"   -d '{"title":"Demo Record","status":"monitoring","payload":{"patient_or_user":"Demo value","wellness_metric":12,"care_notes":"seed note"}}'
+curl http://localhost:5000/api/metrics
 ```
 
 ## Metadata
-- Generated UTC: 2026-03-24T15:35:11.673857+00:00
-- Status: Deployable full-template scaffold complete
+- Idea number: 45
+- Generated UTC: 2026-03-24T15:52:22.074451+00:00
+- Status: Phase-2 complete
